@@ -1,4 +1,4 @@
-import MyButton from './Button.vue';
+import MyButton from './Forms/Button.vue';
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -33,6 +33,7 @@ Primary.args = {
   primary: true,
   label: 'Button',
 };
+// Primary.storyName=" yo Im primary"
 
 export const Secondary = Template.bind({});
 Secondary.args = {

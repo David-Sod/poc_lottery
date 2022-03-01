@@ -1,15 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Page @createAccount="createAccount" @logout="logout" @login="login" :user="user"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Page from './stories/Page.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Page
+  },
+  data(){
+    return {
+      user:{}
+    }
+  },
+  methods:{
+    createAccount(){
+      console.log('Create account')
+      this.user = {
+        name:'some name'
+      };
+    },
+    logout(){
+      console.log('Logging out')
+      this.user = undefined;
+    },
+    login(){
+      console.log('Logging in')
+      this.user={
+        name:''
+      }
+    }
   }
 }
 </script>
