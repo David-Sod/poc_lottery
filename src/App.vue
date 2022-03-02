@@ -1,28 +1,22 @@
 <template>
-  <Main buttonLabel="Swap your tokens" :fromValue="fromValue" @swap="swap" @onInputFromChange="onInputChange"/>
+  <div>
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
+  </div>
+  
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Main from './stories/Views/Main.vue'
+import { provide } from 'vue'
+import store from '@/stores';
 
 export default {
   name: 'App',
-  components: {
-    Main
-  },
-  data(){
-    return {
-      fromValue:''
-    }
-  },
-  methods:{
-    onInputChange(event){
-      this.fromValue=event.target.value;
-    },
-    swap(event){
-      console.log(event);
-    }
+  setup(){
+    provide('store',store);
   },
 }
 </script>

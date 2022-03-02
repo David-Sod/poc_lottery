@@ -1,38 +1,27 @@
 <template>
   <main>
-   <FromInput :loading="loading" @inputChange="onChange" :value="fromValue"/>
-   <Button @click="$emit('swap')" :primary="true" size="medium" :label="buttonLabel"/>
+    <h1>Hello from Main</h1>
+    <h2>Counter state: {{ state.counter }}</h2>
+    <Button @click="methods.decreaseCounter" :primary="false" size="large" label="-"/>
+    <Button @click="methods.reset" :primary="false" size="large" label="reset"/>
+    <Button @click="methods.increaseCounter" :primary="true" size="large" label="+"/>
   </main>
 </template>
 
 <script>
-import FromInput from '../Forms/Input.vue';
 import Button from '../Forms/Button.vue';
-import { reactive } from 'vue';
+import { inject } from 'vue';
 export default {
   name: 'main-view',
 
-  components: { FromInput, Button },
+  components: { Button },
 
-  props: {
-    fromValue: {
-      type: String,
-    },
-    loading: {
-      type: Boolean,
-    },
-    buttonLabel: {
-      type: String,
-    },
-  },
-
-  emits: ['swap', 'onInputFromChange'],
-  setup(props, { emit }) {
-    props = reactive(props);
+  setup() {
+    const store = inject('store')
+    const { methods, state } = store;
     return {
-      onChange(event) {
-        emit('onInputFromChange',event);
-      }
+      methods,
+      state
     }
   },
 };
