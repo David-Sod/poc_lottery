@@ -1,5 +1,5 @@
 <template>
-  <input type="button" :class="classes" @change="onChange" :style="style" />
+  <input :value="value" :disabled="loading" :class="classes" @change="onChange" :style="style" />
 </template>
 
 <script>
@@ -14,11 +14,7 @@ export default {
       type: String,
       required: true,
     },
-    onChange:{
-      type: Function,
-      required:true,
-    },
-    focused: {
+    loading: {
       type: Boolean,
       default: false,
     },
@@ -30,19 +26,19 @@ export default {
     }
   },
 
-  emits: ['click'],
+  emits: ['inputChange'],
 
   setup(props, { emit }) {
     props = reactive(props);
     return {
       classes: computed(() => ({
         'storybook-input': true,
-        // 'storybook-button--primary': props.primary,
-        // 'storybook-button--secondary': !props.primary,
-        // [`storybook-button--${props.size || 'medium'}`]: true,
+        'storybook-input--primary': props.primary,
+        'storybook-input--secondary': !props.primary,
+        [`storybook-input--${props.size || 'medium'}`]: true,
       })),
-      onClick() {
-        emit('click');
+      onChange() {
+        emit('inputChange');
       }
     }
   },
