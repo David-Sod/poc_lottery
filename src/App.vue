@@ -1,39 +1,29 @@
 <template>
-  <Page @createAccount="createAccount" @logout="logout" @login="login" :user="user"/>
+  <Main buttonLabel="Swap your tokens" :fromValue="fromValue" @swap="swap" @onInputFromChange="onInputChange"/>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Page from './stories/Page.vue'
+import Main from './stories/Views/Main.vue'
 
 export default {
   name: 'App',
   components: {
-    Page
+    Main
   },
   data(){
     return {
-      user:{}
+      fromValue:''
     }
   },
   methods:{
-    createAccount(){
-      console.log('Create account')
-      this.user = {
-        name:'some name'
-      };
+    onInputChange(event){
+      this.fromValue=event.target.value;
     },
-    logout(){
-      console.log('Logging out')
-      this.user = undefined;
-    },
-    login(){
-      console.log('Logging in')
-      this.user={
-        name:''
-      }
+    swap(event){
+      console.log(event);
     }
-  }
+  },
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <input :value="value" :disabled="loading" :class="classes" @change="onChange" :style="style" />
+  <input :value="value" :disabled="loading" :class="classes" @input="onChange" :style="style" />
 </template>
 
 <script>
@@ -37,8 +37,8 @@ export default {
         'storybook-input--secondary': !props.primary,
         [`storybook-input--${props.size || 'medium'}`]: true,
       })),
-      onChange() {
-        emit('inputChange');
+      onChange(event) {
+        emit('inputChange',event);
       }
     }
   },
