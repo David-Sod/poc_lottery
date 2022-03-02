@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Button from '../Forms/Button.vue';
+import Button from '../components/Forms/Button.vue';
 import { inject } from 'vue';
 export default {
   name: 'main-view',
