@@ -1,5 +1,5 @@
 <template>
-  <input :value="value" :disabled="loading" :class="classes" @input="onChange" :style="style" />
+  <input v-model="model" :disabled="loading" :class="classes" />
 </template>
 
 <script>
@@ -10,10 +10,6 @@ export default {
   name: 'my-button',
 
   props: {
-    value: {
-      type: String,
-      required: true,
-    },
     loading: {
       type: Boolean,
       default: false,

@@ -1,24 +1,31 @@
 import { reactive } from 'vue';
+import { Decimal } from '@cosmjs/math'
 
 const state =  reactive(
     {
-        counter:0,
+        balance:'',
+        signingClient: null,
+        loading:false,
+        fromInput:'',
     }
 )
 
 const methods = {
-    decreaseCounter(){
-        state.counter--;
+    setBalance(balance){
+        state.balance = balance;
     },
-    increaseCounter(){
-        state.counter++
+    setSigningClient(signing){
+        state.signingClient = signing;
     },
-    reset(){
-        state.counter=0
+}
+const getters = {
+    humanBalance(){
+        if(!state.balance) return '';
+        return Decimal.fromAtomics(state.balance,6);
     }
 }
-
 export default {
     state,
-    methods
+    methods,
+    getters
 }

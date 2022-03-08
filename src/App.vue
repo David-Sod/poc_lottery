@@ -1,20 +1,17 @@
 <template>
-  <div>
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-    </div>
+  <default-layout>
     <router-view/>
-  </div>
-  
+  </default-layout>
 </template>
 
 <script>
 import { provide } from 'vue'
 import store from '@/stores';
+import DefaultLayout from './stories/Layouts/DefaultLayout.vue'
 
 export default {
   name: 'App',
+  components:{ DefaultLayout },
   setup(){
     provide('store',store);
   },
