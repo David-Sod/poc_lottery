@@ -1,7 +1,7 @@
 <template>
     <section class="wrapper_section">
       <h2>Wrap SCRT to sSCRT</h2>
-      <span>Current balance: {{ getters.humanBalance() }}</span>
+      <Balance :balance="getters.humanBalance"/>
       <Input type="number" v-model="state.fromInput" size="large" placeholder="Enter your secret amount" :loading="state.loading"/>
       <span>{{state.fromInput}}</span>
 
@@ -12,12 +12,15 @@
 <script>
 import Button from '../components/Forms/Button.vue';
 import Input from '../components/Forms/Input.vue';
+import Balance from '../components/Labels/Balance.vue';
 import { inject } from 'vue';
 export default {
   name: 'main-view',
 
-  components: { Button, Input },
+  components: { Button, Input, Balance },
+  async mounted(){
 
+  },
   setup() {
     const store = inject('store')
     const { methods, state , getters} = store;
